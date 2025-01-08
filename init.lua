@@ -1,0 +1,7 @@
+require("lazy-config")
+require("tree-sitter")
+require("lsp")
+require("auto-complete")
+require("nvim-tree-config")
+require("mappings")
+require("theme")
