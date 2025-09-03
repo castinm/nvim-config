@@ -2,6 +2,7 @@ vim.opt.signcolumn = "yes"
 
 -- Add cmp_nvim_lsp capabilities settings to lspconfig
 -- This should be executed before you configure any language server
+local lspconfig = require('lspconfig')
 local lspconfig_defaults = require('lspconfig').util.default_config
 lspconfig_defaults.capabilities = vim.tbl_deep_extend(
   'force',
@@ -28,7 +29,24 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
-require("lspconfig").clangd.setup({})
-require("lspconfig").ts_ls.setup({})
-require("lspconfig").html.setup({})
-require("lspconfig").svelte.setup({})
+lspconfig.clangd.setup({})
+lspconfig.ts_ls.setup({})
+lspconfig.html.setup({})
+lspconfig.svelte.setup({})
+lspconfig.rust_analyzer.setup({})
+
+vim.diagnostic.config({
+  virtual_text = true,  -- inline diagnostics
+  signs = true,         -- show signs in gutter
+  underline = true,     -- underline the offending code
+  update_in_insert = false, -- don’t show while typing
+  severity_sort = true,
+})
+
+-- Popups on cursor hover
+vim.api.nvim_create_autocmd("CursorHold", {
+  callback = function()
+    vim.diagnostic.open_float(nil, { focus = false })
+  end
+})
+
