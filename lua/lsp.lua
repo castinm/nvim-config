@@ -29,6 +29,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 require("lspconfig").clangd.setup({})
-require("lspconfig").ts_ls.setup({})
+require("lspconfig").ts_ls.setup({
+  filetypes = {
+    "javascript", "typescript", "svelte", "vue"
+  }
+})
 require("lspconfig").html.setup({})
 require("lspconfig").svelte.setup({})
