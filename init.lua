@@ -7,5 +7,5 @@ require("mappings")
 require("theme")
 
 -- Restore terminal cursor on exiting
-vim.cmd([[autocmd VimLeave * set guicursor= | call chansend(v:stderr, "\x1b[ q")]])
+vim.cmd([[autocmd VimLeave * set guicursor= | call chansend(v:stderr, "\x1b[5 q")]])
 
