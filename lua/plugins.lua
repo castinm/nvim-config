@@ -34,6 +34,13 @@ return {
   },
   -- Autopairs
   { "windwp/nvim-autopairs", event = "InsertEnter", config = true },
+  { -- for html
+    'windwp/nvim-ts-autotag',
+    dependencies = 'nvim-treesitter/nvim-treesitter',
+    config = function()
+      require('nvim-ts-autotag').setup()
+    end,
+  },
   -- LSP
   {'neovim/nvim-lspconfig'},
   {'hrsh7th/cmp-nvim-lsp'},
